@@ -1,0 +1,15 @@
+<div class="ui container">
+  <div class="ui menu">
+    <div class="header item">
+      {{baseCtrl.welcomeMessage}}
+    </div>
+    <a ng-repeat="item in baseCtrl.menuitems" class="item" href="room/{{item.id}}">{{item.name}}</a>
+    <div class="right menu">
+      <a class="item" href="about">About the Author</a>
+    </div>
+  </div>
+  <div>
+    <h1>Let's schedule a room!</h1>
+    <p>Lorem ipsum.</p>
+  </div>
+</div>
