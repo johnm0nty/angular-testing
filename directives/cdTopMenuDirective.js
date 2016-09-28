@@ -3,7 +3,6 @@
     .module('base')
     .directive('cdTopMenu',function(){
       function cdTopMenuController(){
-        this.header = 'Menu Header';
         this.availableRooms = [{
           "id": 1,
           "name": "Sim City",
@@ -31,14 +30,16 @@
             }else{
               currentRoomInLoop.active = false;
             }
-          })
+          });
         };
       };
       return {
         templateUrl:'partials/topmenu.html',
         controller:cdTopMenuController,
         controllerAs:'topMenu',
-        bindToController:true
+        bindToController:{
+          header:'@header'
+        }
       }
     });
 }(window.angular))
