@@ -1,0 +1,9 @@
+<div class="ui menu" style="margin-bottom:1em;">
+  <div class="header item">
+    <a href="index.html">{{topMenu.header}}</a>
+  </div>
+  <a ng-repeat="item in topMenu.availableRooms" ng-click="topMenu.setSelectedRoom(item.id)" ng-class="{active:item.active,item:true}" href="room/{{item.id}}">{{item.name}}</a>
+  <div class="right menu">
+    <a href="about" class="item">About the Author</a>
+  </div>
+</div>
