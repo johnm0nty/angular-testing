@@ -2,43 +2,26 @@
   angular
     .module('base')
     .directive('cdTopMenu',function(){
-      function cdTopMenuController(){
-        this.availableRooms = [{
-          "id": 1,
-          "name": "Sim City",
-          "active": false
-        },
-        {
-          "id": 2,
-          "name": "Zelda",
-          "active": false
-        },
-        {
-          "id": 3,
-          "name": "Sonic",
-          "active": false
-        },
-        {
-          "id": 4,
-          "name": "Halo",
-          "active": false
-        }];
+      function cdTopMenuController(roomsService){
+        this.availableRooms = roomsService.availableRooms;
+        this.sort = '+name';
         this.setSelectedRoom = function(id){
-          this.availableRooms.forEach((currentRoomInLoop) => {
-            if(currentRoomInLoop.id === id){
-              currentRoomInLoop.active = true;
-            }else{
-              currentRoomInLoop.active = false;
-            }
-          });
+          roomsService.setSelectedRoom(id);
         };
       };
       return {
-        templateUrl:'partials/topmenu.html',
+        // templateUrl:'partials/topmenu.html',
+        templateUrl:(function(scope,elem,attrs){
+          if(elem.id == 'top-menu'){
+            return 'partials/topmenu.html';
+          }else{
+            return 'partials/miscmenu.html';
+          }
+        }),
         controller:cdTopMenuController,
         controllerAs:'topMenu',
         bindToController:{
-          header:'@header'
+          header:'@'
         }
       }
     });
