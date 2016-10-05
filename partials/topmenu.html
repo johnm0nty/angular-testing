@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-  <a class="navbar-brand" ng-click="topMenu.setSelectedRoom(item.id)" href="index.html">{{topMenu.header}}</a>
+  <a class="navbar-brand" ng-click="topMenu.setSelectedRoom(item.id)" href="./">{{topMenu.header}}</a>
   <ul class="navbar-nav navbar-left nav">
     <li>
       <cd-sorter></cd-sorter>
@@ -10,5 +10,8 @@
   </ul>
   <ul class="navbar-nav navbar-right nav">
     <li><a href="about" ng-click="topMenu.setSelectedRoom(item.id)">About the Author</a></li>
+    <li ng-repeat="item in topMenu.bookmarks | orderBy:sortBy" ng-click="topMenu.setSelectedRoom(item.id)" ng-class="{active:item.active}">
+      <a href="room/{{item.id}}">{{item.name}}</a>
+    </li>
   </ul>
 </nav>

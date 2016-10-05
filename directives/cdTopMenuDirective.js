@@ -2,11 +2,15 @@
   angular
     .module('base')
     .directive('cdTopMenu',function(){
-      function cdTopMenuController(roomsService){
+      function cdTopMenuController(roomsService,userSettingsService){
         this.availableRooms = roomsService.availableRooms;
+        this.bookmarks = userSettingsService.bookmarks;
         this.sort = '+name';
         this.setSelectedRoom = function(id){
           roomsService.setSelectedRoom(id);
+        };
+        this.addToBookmarks = function(id){
+          userSettingsService.addToBookmarks(id);
         };
       };
       return {
